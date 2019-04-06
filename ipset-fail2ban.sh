@@ -12,7 +12,7 @@
 #
 #     If -i <ipset_blacklist> is specified, then -r <ipset_restore_file> is required, and -t
 #     <ipset_tmp_blacklist> is also used, but a default value will be generated if it is not
-#     explicity specified. 
+#     explicity specified.
 #
 # SYNOPSIS
 #     ipset-blacklist.sh [CONFIGURATION_FILE]
@@ -25,9 +25,9 @@
 #             exists, IPs will be read from the file and added to the current list. Duplicate
 #             IPs will be pruned. If not specified, banned IPs will be printed to STDOUT.
 #
-#     -i, --ipset-blacklist <ipset_blacklist> 
-#             Name of ipset blacklist to add banned IP addresses to. 
-# 
+#     -i, --ipset-blacklist <ipset_blacklist>
+#             Name of ipset blacklist to add banned IP addresses to.
+#
 #     -j, --jail <jails>
 #             Comma separated (no space) list of jails to get banned IP addresses from.
 #

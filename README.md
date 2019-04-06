@@ -28,12 +28,12 @@ effectively self updating.
 
 ### Grab the **ipset-fail2ban.sh** and save it somewhere that makes sense. Make it executable.
     ```
-    wget -O /usr/local/sbin/ipset-fail2ban.sh https://raw.githubusercontent.com/ritsu/ipset-fail2ban/master/ipset-fail2ban.sh && chmod +x /usr/local/sbin/ipset-fail2ban.sh
+    wget -O /usr/local/sbin/ipset-fail2ban.sh https://raw.githubusercontent.com/cremesk/ipset-fail2ban/master/ipset-fail2ban.sh && chmod +x /usr/local/sbin/ipset-fail2ban.sh
     ```
 
 ### Grab the default configuration file.
     ```
-    mkdir -p /etc/ipset-fail2ban && wget -O /etc/ipset-fail2ban/ipset-fail2ban.conf https://raw.githubusercontent.com/ritsu/ipset-fail2ban/master/ipset-fail2ban.conf
+    mkdir -p /etc/ipset-fail2ban && wget -O /etc/ipset-fail2ban/ipset-fail2ban.conf https://raw.githubusercontent.com/cremesk/ipset-fail2ban/master/ipset-fail2ban.conf
     ```
 
 ### Modify **ipset-fail2ban.conf** according to your needs. Particularly,
@@ -96,7 +96,7 @@ If you use additional actions, create those files accordingly.
 ## Using ipset-fail2ban with published blocklists
 Besides creating ipset blacklists from fail2ban jails, you can also create ipset blacklists from
 [published blocklists](https://github.com/firehol/blocklist-ipsets) with
-[ipset-blacklist](https://github.com/trick77/ipset-blacklist) to preemptively block bad IPs.
+[ipset-blacklist](https://github.com/cremesk/ipset-blacklist) to preemptively block bad IPs.
 
 Both scripts can run independently on the same machine to generate two separate blacklists, which can be useful for
 keeping track of separate stats. Or, you can combine them into one blacklist by having ipset-fail2ban write to a local
