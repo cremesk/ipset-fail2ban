@@ -27,14 +27,14 @@ effectively self updating.
 ## Instructions for Debian/Ubuntu based installations
 
 ### Grab the **ipset-fail2ban.sh** and save it somewhere that makes sense. Make it executable.
-    ```
-    wget -O /usr/local/sbin/ipset-fail2ban.sh https://raw.githubusercontent.com/cremesk/ipset-fail2ban/master/ipset-fail2ban.sh && chmod +x /usr/local/sbin/ipset-fail2ban.sh
-    ```
+```
+wget -O /usr/local/sbin/ipset-fail2ban.sh https://raw.githubusercontent.com/cremesk/ipset-fail2ban/master/ipset-fail2ban.sh && chmod +x /usr/local/sbin/ipset-fail2ban.sh
+```
 
 ### Grab the default configuration file.
-    ```
-    mkdir -p /etc/ipset-fail2ban && wget -O /etc/ipset-fail2ban/ipset-fail2ban.conf https://raw.githubusercontent.com/cremesk/ipset-fail2ban/master/ipset-fail2ban.conf
-    ```
+```
+mkdir -p /etc/ipset-fail2ban && wget -O /etc/ipset-fail2ban/ipset-fail2ban.conf https://raw.githubusercontent.com/cremesk/ipset-fail2ban/master/ipset-fail2ban.conf
+```
 
 ### Modify **ipset-fail2ban.conf** according to your needs. Particularly,
 - `JAILS` will need to be set according to your fail2ban setup
@@ -45,18 +45,18 @@ ipset blacklist. It is recommended to set this to `true` after you have settled 
 system.
 
 ### Once your config is set, run ipset-fail2ban with the configuration file and check iptables for the blacklist rule.
-    ```
-    /usr/local/sbin/ipset-fail2ban.sh /etc/ipset-fail2ban/ipset-fail2ban.conf
-    iptables -L INPUT -v --line-numbers | grep match-set
+```
+/usr/local/sbin/ipset-fail2ban.sh /etc/ipset-fail2ban/ipset-fail2ban.conf
+iptables -L INPUT -v --line-numbers | grep match-set
 
-    1   5209  327K DROP     all  --  any    any     anywhere       anywhere       match-set blacklist-fail2ban src
-    ```
+1   5209  327K DROP     all  --  any    any     anywhere       anywhere       match-set blacklist-fail2ban src
+```
 
 ### Copy the following code into '/etc/cron.d/update-blacklist_fail2ban' if you want it to automatically update.
-    ```
-    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    0 0 * * * root /usr/local/sbin/ipset-fail2ban.sh /etc/ipset-fail2ban/ipset-fail2ban.conf
-    ```
+```
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+0 0 * * * root /usr/local/sbin/ipset-fail2ban.sh /etc/ipset-fail2ban/ipset-fail2ban.conf
+```
 
 ## Making ipset blacklist and iptables rule persistent
 Since the ipset blacklist and iptables rule are stored in memory, they are lost after a reboot. A simple way to make
