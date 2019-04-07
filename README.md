@@ -63,7 +63,7 @@ Since the ipset blacklist and iptables rule are stored in memory, they are lost 
 them persistent is to edit `/etc/rc.local` to create the blacklist and add the rule at startup:
 ```
 ipset restore < /etc/ipset-fail2ban/ipset-fail2ban.restore
-iptables -I INPUT 2 -m set --match-set blacklist-fail2ban src -j DROP
+iptables -I INPUT 2 -m set --match-set blacklist_fail2ban src -j DROP
 ```
 
 You could also instead use a firewall script of your choice and packages like _iptables-persistent_ and _netfilter-persistent_.
