@@ -144,7 +144,7 @@ get_options() {
                 shift
                 ;;
             -c|--cleanup)
-                echo > /etc/ipset-fail2ban/ipset-fail2ban.list
+                echo > "$BLACKLIST_FILE"
                 CLEANUP=true
                 shift
                 ;;
